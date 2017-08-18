@@ -1,5 +1,6 @@
 <template>
     <div id="my">
+      <common-header></common-header>
       <div class="information border">
         <div class="information-left">
           <div class="imgs"></div>
@@ -9,7 +10,7 @@
           <p>KJ456812458</p>
         </div>
         <div class="information-right">
-          <div class="grade" v-model="msg">
+          <div class="grade">
             {{msg}} 我的等级 >
           </div>
         </div>
@@ -28,43 +29,96 @@
           <p>竞拍额度(元)</p>
         </div>
       </div>
-
-      <mt-cell title="我的拍卖" icon="more" class="mint-cell-allow-right border border-top line"   is-link :to="{ name: 'Auction' }">
-        <img slot="icon" src="../assets/1.png" width="24" height="24">
-      </mt-cell>
-      <mt-cell title="我的征集"  class="mint-cell-allow-right border"  ></mt-cell>
-      <mt-cell title="我的委托"  class="mint-cell-allow-right border"  ></mt-cell>
-      <mt-cell title="拍卖法则"  class="mint-cell-allow-right border"  ></mt-cell>
-      <mt-cell title="联系客服"  class="mint-cell-allow-right border"  ></mt-cell>
-      <mt-cell title="优惠券"  class="mint-cell-allow-right border line border-top"  ></mt-cell>
-      <mt-cell title="设置"  class="mint-cell-allow-right border line border-top"  ></mt-cell>
+      <section class="cell margin-20" @click="gotoAdress('/auction')">
+        <div class="cell_left">
+          <img src="../assets/1.png" alt=""><span>我的拍卖</span>
+        </div>
+        <div class="cell_right">
+          <img src="../assets/2.png" alt="">
+        </div>
+      </section>
+      <section class="cell" @click="gotoAdress('/my_collect')">
+        <div class="cell_left">
+          <img src="../assets/1.png" alt=""><span>我的征集</span>
+        </div>
+        <div class="cell_right">
+          <img src="../assets/2.png" alt="">
+        </div>
+      </section>
+      <section class="cell " @click="gotoAdress('/entrust')">
+        <div class="cell_left">
+          <img src="../assets/1.png" alt=""><span>我的委托</span>
+        </div>
+        <div class="cell_right">
+          <img src="../assets/2.png" alt="">
+        </div>
+      </section>
+      <section class="cell " @click="gotoAdress('/auction')">
+        <div class="cell_left">
+          <img src="../assets/1.png" alt=""><span>拍卖法则</span>
+        </div>
+        <div class="cell_right">
+          <img src="../assets/2.png" alt="">
+        </div>
+      </section>
+      <section class="cell border" @click="gotoAdress('/auction')">
+        <div class="cell_left">
+          <img src="../assets/1.png" alt=""><span>联系客服</span>
+        </div>
+        <div class="cell_right">
+          <img src="../assets/2.png" alt="">
+        </div>
+      </section>
+      <section class="cell border margin-20" @click="gotoAdress('/auction')">
+        <div class="cell_left">
+          <img src="../assets/1.png" alt=""><span>优惠券</span>
+        </div>
+        <div class="cell_right">
+          <img src="../assets/2.png" alt="">
+        </div>
+      </section>
+      <section class="cell border margin-20" @click="gotoAdress('/auction')">
+        <div class="cell_left">
+          <img src="../assets/1.png" alt=""><span>设置</span>
+        </div>
+        <div class="cell_right">
+          <img src="../assets/2.png" alt="">
+        </div>
+      </section>
+      <common-footer></common-footer>
     </div>
 </template>
 
 <script>
-    export default {
-      name: 'my',
-      data () {
-        return {
-            msg: 'v'
-        }
-      },
-      method: {
-        click () {
-          this.$router.push('/my/auction')
-        }
+  import commonHeader from '../components/header'
+  import commonFooter from '../components/footer'
+  export default {
+    name: 'my',
+    data () {
+      return {
+        msg: 'v'
       }
+    },
+    methods: {
+      gotoAdress (path) {
+        this.$router.push(path)
+      }
+    },
+    components: {
+      commonHeader,
+      commonFooter
     }
+  }
 </script>
 
 <style>
   #my {
     margin-top: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 2rem;
+    overflow: hidden;
   }
   .information {
     display: flex;
-    height:5em;
     position: relative;
   }
   .information-left {
@@ -75,7 +129,8 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    line-height: 0.5em;
+    font-size: 0.5rem;
+    line-height: 0.1rem;
   }
   .information-right {
     display: flex;
@@ -83,19 +138,19 @@
   }
   .imgs {
     width: 60%;
-    height: 4em;
+    height: 2rem;
     margin: auto;
     background-color: red;
   }
   .grade {
     position: absolute;
-    right:0;
-    top: 1em;
-    border:0.01em solid #DDD;
-    height: 2em;
-    line-height: 2em;
-    padding:0.2em 2em;
-    margin:auto;
+    right: -0.11rem;
+    top: 25%;
+    border: 0.01em solid #DDD;
+    height: 1rem;
+    padding: 0.1rem 0.3rem;
+    margin: auto;
+    font-size: 0.5rem;
   }
   .mint-cell-wrapper {
     text-align: left;
@@ -111,12 +166,14 @@
   }
   .money {
     display: flex;
+    font-size: 0.5rem;
+    line-height: 0.01rem;
   }
   .left {
     display: flex;
     flex: 1;
     flex-direction: column;
-    line-height: 0.5em;
+    line-height: 0.5rem;
   }
   .right{
     display: flex;
@@ -127,8 +184,42 @@
   .red {
     display: flex;
     flex-direction: column;
-    line-height: 0.5em;
+    line-height: 0.1rem;
+    font-size: 0.5rem;
     border-top: 0.01em solid #ddd;
   }
 
+  .cell {
+    border-top:0.01rem solid #DDD;
+    display: flex;
+    font-size: 0.5rem;
+    padding-top:2%;
+    padding-bottom: 2%;
+    position: relative;
+    line-height: 1.5rem;
+  }
+  .cell_left img {
+    width: 10%;
+    height: 100%;
+    margin-right: 1%;
+    padding-left: 3%;
+  }
+  .cell_left {
+    display: flex;
+    flex:3;
+  }
+  .cell_right {
+    display: flex;
+    flex: 1;
+  }
+  .cell_right img {
+    width: 2%;
+    height: 30%;
+    position: absolute;
+    right:5%;
+    top:30%;
+  }
+  .margin-20 {
+    margin-top: 10%;
+  }
 </style>

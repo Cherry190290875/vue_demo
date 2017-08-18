@@ -1,7 +1,7 @@
 <template>
-  <div id="auction">
+  <div id="entrust">
     <common-header></common-header>
-    拍卖页面
+    委托页面
     <common-footer></common-footer>
   </div>
 </template>
@@ -10,7 +10,7 @@
   import commonHeader from '../components/header'
   import commonFooter from '../components/footer'
   export default {
-    name: 'auction',
+    name: 'entrust',
     components: {
       commonHeader,
       commonFooter
@@ -19,7 +19,7 @@
 </script>
 
 <style>
-  #auction {
+  #entrust {
     margin-top: 40px;
     margin-bottom: 2rem;
     overflow: hidden;

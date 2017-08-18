@@ -4,7 +4,9 @@ import Router from 'vue-router'
 import Index from '../page/index'
 import Collect from '../page/collect'
 import My from '../page/my'
-import Auction from '../page/auction.vue'
+import Auction from '../page/auction'
+import Entrust from '../page/entrust'
+import myCollect from '../page/my_collect'
 Vue.use(Router)
 
 export default new Router({
@@ -27,6 +29,16 @@ export default new Router({
       path: '/auction',
       name: Auction,
       component: Auction
+    },
+    {
+      path: '/entrust',
+      name: Entrust,
+      component: Entrust
+    },
+    {
+      path: '/my_collect',
+      name: myCollect,
+      component: myCollect
     }
   ]
 })

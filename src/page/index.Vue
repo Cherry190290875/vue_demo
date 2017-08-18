@@ -1,6 +1,6 @@
 <template>
   <div id="index">
-
+    <common-header go-back="true" :head-title="indextitle"></common-header>
     <div class="bg_item">
       <mt-search :value.sync="value">
         <mt-cell v-for="item in result" :title="item"></mt-cell>
@@ -31,7 +31,7 @@
       <p class="time ccc">即将开始</p>
     </div>
     <h4>距离本场结束</h4>
-    <p>10:20:25</p>
+    <p class="title_time">10:20:25</p>
     <div class="item" v-for="text in texts">
       <div class="item-left">
         <div class="img"></div>
@@ -43,14 +43,31 @@
         <p class="p_text">起拍价：{{text.starPri}}</p>
       </div>
     </div>
+    <!--<div ref="wrapper" :style="{height:wrapperHeight+'px'}" class="wrapper">
+      <mt-loadmore :bottom-method = "loadBottom" @bottom-status-change = "handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore">
+        <ul>
+          <li v-for="list in lists">{{list}}</li>
+        </ul>
+        <div slot="bottom" >
+          <span v-show="bottomStatus !== 'loading'"  >↑</span>
+          <span v-show="bottomStatus === 'loading'">
+            <mt-spinner type="snake"></mt-spinner>
+          </span>
+        </div>
+      </mt-loadmore>
+    </div>-->
+
+    <common-footer></common-footer>
   </div>
 </template>
-
 <script>
+  import commonHeader from '../components/header'
+  import commonFooter from '../components/footer'
   export default {
     name: 'index',
     data () {
       return {
+        indextitle: '天力商城',
         texts: [
           {
             Num: '111111',
@@ -71,16 +88,52 @@
             starPri: '100'
           }
         ]
-
+       /* list: [],
+        bottomStatus: '',
+        wrapperHeight: 0*/
       }
+    },
+    components: {
+      commonHeader,
+      commonFooter
     }
+   /* methods: {
+      handleBottomChage (status) {
+        this.bottomStatus = status
+      },
+      loadBottom () {
+        setTimeout(() => {
+          let lastValue = this.lists[this.lists.length - 1]
+          if (lastValue < 40) {
+            for (let i = 0; i < 10; i++) {
+              this.lists.push(lastValue + i)
+            }
+          } else {
+            this.allLoaded = true
+          }
+          this.$refs.loadmore.onBottomLoaded()
+        }, 1500)
+      }
+    },
+    created () {
+      for (let i = 1; i <= 20; i++) {
+        this.lists.push[i]
+      }
+    },
+    mounted () {
+      this.wrapperHeight = document.documentElement.clientHeight - this.$ref.wrapper.getBoundingClientRect().top
+    }*/
   }
 </script>
 
 <style>
   #index {
-   /* margin-top: 40px;*/
-    margin-bottom: 40px;
+    width: 100%;
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+  .title_time {
+    font-size: 0.6rem;
   }
   .item-left {
     display: flex;
@@ -89,26 +142,33 @@
   }
   .img {
     width: 90%;
-    height:8em;
+    height:80%;
     margin: auto;
     background: pink;
+  }
+  h4 {
+    font-size: 0.7rem;
+  }
+  h3 {
+    font-size: 0.8rem;
   }
   .item-right {
     display: flex;
     background: yellow;
-    height: 10em;
+    height: 100%;
     flex: 3;
     flex-flow: column;
     padding-left: 2%;
   }
   .item {
     display: flex;
-    height: 10em;
+    height: 20%;
     text-align: left;
     margin-top: 1%;
   }
   .p_text {
-    line-height: 0.1em;
+    font-size: 0.5rem;
+    line-height: 0.5rem;
   }
   .mint-searchbar-inner {
     border-radius: 28px;
@@ -117,26 +177,27 @@
     height:auto;
   }
   .bg_item {
-    height: 15em;
+    height: 10rem;
     width: 100%;
     background-color: antiquewhite;
   }
   .mint-searchbar {
     margin: auto;
-    margin-top: 10em;
+    margin-top: 6rem;
     width: 80%;
   }
   .time_item {
     display: flex;
-    margin: auto 10em ;
+    margin: auto 0.2rem ;
   }
   .time {
     flex: 2;
     border:1px solid #666;
     color:#666;
     background: #fafafa;
-    padding: 1em 1em;
-    border-radius: 2em;
+    border-radius: 1.5rem;
+    line-height: 3rem;
+    font-size: 0.7rem;
   }
   .active {
     background: red;
@@ -145,10 +206,12 @@
   }
   .fgx {
     flex: 1;
-    line-height: 3em;
+    line-height: 3rem;
+    width: 0.8rem;
   }
   .ccc {
     background-color: #fff;
     border:none;
+    font-size: 0.5rem;
   }
 </style>

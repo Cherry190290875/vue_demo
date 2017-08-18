@@ -1,7 +1,7 @@
 <template>
-    <div id="collect">
+    <div id="login">
       <common-header></common-header>
-        <p style="background-color: yellow;height: 500px;width: 100%;line-height: 500px">在线征集</p>
+        登录页面
       <common-footer></common-footer>
     </div>
 </template>
@@ -10,7 +10,7 @@
   import commonHeader from '../components/header'
   import commonFooter from '../components/footer'
   export default {
-    name: 'collect',
+    name: 'login',
     components: {
       commonHeader,
       commonFooter
@@ -19,8 +19,5 @@
 </script>
 
 <style>
-#collect {
-  margin-top: 40px;
-  margin-bottom: 2rem;
-}
+
 </style>
